@@ -1,6 +1,7 @@
 # flutter_club
 
 A new Flutter project.
+- [Flutter 实战](https://book.flutterchina.club)
 
 ## Getting Started
 

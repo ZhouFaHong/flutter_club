@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_club/event_pointer/event_poiter_test.dart';
 import 'package:flutter_club/inherited/inherited_test_route.dart';
 
+import 'animation/animation_test.dart';
 import 'context_route.dart';
 import 'dialog/dialog_test.dart';
 import 'event_pointer/both_direction_test.dart';
 import 'event_pointer/gesture_conflict_test_route.dart';
 import 'event_pointer/gesture_recognizer_test_route.dart';
+import 'event_pointer/gesture_test.dart';
 import 'event_pointer/notification_test.dart';
 import 'futurebuilder_and_streambuilder.dart';
+import 'http_test.dart';
 import 'navi.dart';
 import 'notis_scrollview.dart';
 import 'provider/provider_test_route.dart';
 import 'theme_text_route.dart';
+import 'websocket/websocket_demo.dart';
 import 'will_pop_cope_test_route.dart';
+import 'zidingyizujian/custom_paint_route.dart';
+import 'zidingyizujian/gradient_circular_progress_indicator_demo.dart';
+import 'zidingyizujian/turn_box_demo.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -27,9 +34,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _incrementCounter() {
-    setState(() {
-      
+  void _incrementCounter() async {
+    var url = "http://download.dcloud.net.cn/HBuilder.9.0.2.macosx_64.dmg";
+    var savePath = "/Volumes/Love_Noah/flutter/flutter_club/example/HBuilder.9.0.2.macosx_64.dmg";
+    print(savePath);
+    await downloadWithChunks(url, savePath, onReceiveProgress: (received, total) {
+      if (total != -1) {
+        print("${(received / total * 100).floor()}%");
+      }
     });
   }
 
@@ -61,11 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
             button(title: 'ThemeTestRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => ThemeTestRoute()))),
             button(title: 'FutureBuilderAndStreamBuilderTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => FutureBuilderAndStreamBuilderTest()))),
             button(title: 'DialogTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => DialogTest()))),
-            button(title: 'EventPointerTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => EventPointerTest()))),
-            button(title: 'GestureRecognizerTestRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => GestureRecognizerTestRoute()))),
-            button(title: 'BothDirectionTestRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => BothDirectionTestRoute()))),
-            button(title: 'GestureConflictTestRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => GestureConflictTestRoute()))),
-            button(title: 'NotificationTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => NotificationTest()))),
+            button(title: 'GestureTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => GestureTest()))),
+            button(title: 'AnimationTest',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => AnimationTest()))),
+            button(title: 'TurnBoxRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => TurnBoxRoute()))),
+            button(title: 'CustomPaintRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => CustomPaintRoute()))),
+            button(title: 'GradientCircularProgressRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => GradientCircularProgressRoute()))),
+            button(title: 'HttpTestRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => HttpTestRoute()))),
+            button(title: 'WebSocketRoute',onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (c) => WebSocketRoute()))),
           ],
         ),
       ),),

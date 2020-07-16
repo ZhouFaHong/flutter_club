@@ -111,7 +111,6 @@ class _DragState extends State<_Drag> with SingleTickerProviderStateMixin {
             onPanDown: (DragDownDetails e) {
               //打印手指按下的位置(相对于屏幕)
               print("用户手指按下：${e.globalPosition}");
-              Navigator.push(context, MaterialPageRoute(builder: (c)=>ScaleTestRoute()));
             },
             //手指滑动时会触发此回调
             onPanUpdate: (DragUpdateDetails e) {
